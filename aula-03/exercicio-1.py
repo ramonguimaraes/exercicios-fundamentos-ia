@@ -18,12 +18,14 @@ def funcaoRampa(somaPonderada):
 		return 1
 
 # Funçãoo Sigmoide
-def funcaoSigmoide(somaPonderada):
-	if somaPonderada >= 0:
-		f = 1 - Fraction(1,(1+somaPonderada))
+def funcaoSigmoide(s):
+	if s >= 0:
+		# return 1 - 1/(1+s)
+		f = 1 - Fraction(1,(1+s))
 		return f
 	else:
-		f = -1 + Fraction(1,(1-somaPonderada))
+		# return -1 + 1/(1-s)
+		f = -1 + Fraction(1,(1-s))
 		return f
 
 
