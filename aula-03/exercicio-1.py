@@ -1,44 +1,62 @@
+# Biblioteca para trabalhar com Frações
 from fractions import Fraction 
 
-def limiteRapido(s):
-        if s <= 0:
-                return -1
+# Função para calcular o Limite Rapido
+def limiteRapido(somaPonderada):
+        if somaPonderada <= 0:
+            return -1
         else:
-                return 1
+            return 1
 
-def funcaoRampa(s):
-	if s < 0:
+# Função Rampa
+def funcaoRampa(somaPonderada):
+	if somaPonderada < 0:
 		return 0
-	elif s <= 0 and s <= 1:
-		return s
+	elif somaPonderada <= 0 and somaPonderada <= 1:
+		return somaPonderada
 	else:
 		return 1
 
-def funcaoSigmoide(s):
-	if s >= 0:
-		# return 1 - 1/(1+s)
-		f = 1 - Fraction(1,(1+s))
+# Funçãoo Sigmoide
+def funcaoSigmoide(somaPonderada):
+	if somaPonderada >= 0:
+		f = 1 - Fraction(1,(1+somaPonderada))
 		return f
 	else:
-		# return -1 + 1/(1-s)
-		f = -1 + Fraction(1,(1-s))
+		f = -1 + Fraction(1,(1-somaPonderada))
 		return f
 
+
+#Função para imprir os dados
+def imprimeInformacoes(somaPonderada):
+	funcao = input("\nQual funcao voce deseja calcular? \n 1 - Limite Rapida\n 2 - Funcao Rampa \n 3 - Funcao Sigmoide \n 4 - Todas\n >>> ")
+
+	if funcao == '1':
+		print("\nLimite Rapido = ", limiteRapido(somaPonderada))
+
+	elif funcao == '2':
+		print("\nFuncao Rampa = ", funcaoRampa(somaPonderada))
+	
+	elif funcao == '3':
+		print("\nFuncao Sigmoide = ", funcaoSigmoide(somaPonderada))
+	
+	elif funcao == '4':
+		print("\nLimite Rapido = ", limiteRapido(somaPonderada))
+		print("Funcao Rampa = ", funcaoRampa(somaPonderada))
+		print("Funcao Sigmoide = ", funcaoSigmoide(somaPonderada))
+	
+	else:
+		print("\nOpcao invalida")
+
+
+
+#MAIN
+
+# Entrada de dados
 entrada = input("Informe o valor de entrada: ")
 peso = input("Informe o peso: ")
-s = int(entrada) * int(peso)
 
-funcao = input("\nQual funcao voce deseja calcular? \n 1 - Limite Rapida\n 2 - Funcao Rampa \n 3 - Funcao Sigmoide \n 4 - Todas\n >>> ")
+#Calculando a soma ponderada
+somaPonderada = int(entrada) * int(peso)
 
-if funcao == '1':
-    print("\nLimite Rapido = ", limiteRapido(s))
-elif funcao == '2':
-    print("\nFuncao Rampa = ", funcaoRampa(s))
-elif funcao == '3':
-    print("\nFuncao Sigmoide = ", funcaoSigmoide(s))
-elif funcao == '4':
-    print("\nLimite Rapido = ", limiteRapido(s))
-    print("Funcao Rampa = ", funcaoRampa(s))
-    print("Funcao Sigmoide = ", funcaoSigmoide(s))
-else:
-    print("\nOpcao invalida")
+imprimeInformacoes(somaPonderada)
